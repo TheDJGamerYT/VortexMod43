@@ -1,5 +1,6 @@
 package org.nerdorg.vortexmod.packets.s2c;
 
+import com.code.tama.triggerapi.networking.ImAPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
@@ -13,7 +14,7 @@ import org.nerdorg.vortexmod.blocks.flight_computer.FlightComputerBlockEntity;
 import java.util.function.Supplier;
 import java.util.logging.Level;
 
-public class SyncComputerInfoPacket {
+public class SyncComputerInfoPacket implements ImAPacket {
     private BlockPos pos;
     private BlockPos currentPos;
     private double cRotX;

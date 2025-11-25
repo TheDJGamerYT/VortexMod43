@@ -3,6 +3,7 @@ package com.code.tama.triggerapi.dimensions.packets.s2c;
 
 import java.util.function.Supplier;
 
+import com.code.tama.triggerapi.networking.ImAPacket;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceKey;
@@ -11,7 +12,7 @@ import net.minecraftforge.network.NetworkEvent;
 
 import com.code.tama.triggerapi.dimensions.SyncDimensionsClientHandler;
 
-public class SyncDimensionsS2C {
+public class SyncDimensionsS2C implements ImAPacket {
 
 	public boolean add;
 

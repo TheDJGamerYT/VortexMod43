@@ -214,7 +214,7 @@ public final class DimensionManager implements DimensionAPI {
 			for (RegistryLayer layer : RegistryLayer.values()) {
 				if (layer == RegistryLayer.DIMENSIONS) {
 					newRegistryAccessList
-							.add(new RegistryAccess.ImmutableRegistryAccess(List.of(newRegistry)).freeze());
+							.add(new ImmutableRegistryAccess(List.of(newRegistry)).freeze());
 				} else {
 					newRegistryAccessList.add(layeredRegistryAccess.getLayer(layer));
 				}

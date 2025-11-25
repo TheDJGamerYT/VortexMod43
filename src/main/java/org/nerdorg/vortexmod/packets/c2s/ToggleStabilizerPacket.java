@@ -1,5 +1,6 @@
 package org.nerdorg.vortexmod.packets.c2s;
 
+import com.code.tama.triggerapi.networking.ImAPacket;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
@@ -8,7 +9,7 @@ import org.nerdorg.vortexmod.blocks.flight_computer.FlightComputerBlockEntity;
 
 import java.util.function.Supplier;
 
-public class ToggleStabilizerPacket {
+public class ToggleStabilizerPacket implements ImAPacket {
     private BlockPos pos;
 
     public ToggleStabilizerPacket(BlockPos pos) {

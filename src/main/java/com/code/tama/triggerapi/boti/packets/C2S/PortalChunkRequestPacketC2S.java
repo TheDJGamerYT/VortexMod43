@@ -3,6 +3,7 @@ package com.code.tama.triggerapi.boti.packets.C2S;
 
 import com.code.tama.triggerapi.boti.AbstractPortalTile;
 import com.code.tama.triggerapi.boti.BOTIUtils;
+import com.code.tama.triggerapi.networking.ImAPacket;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.FriendlyByteBuf;
@@ -14,7 +15,7 @@ import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-public class PortalChunkRequestPacketC2S {
+public class PortalChunkRequestPacketC2S implements ImAPacket {
 	private final int chunks;
 
 	private final BlockPos portalPos;

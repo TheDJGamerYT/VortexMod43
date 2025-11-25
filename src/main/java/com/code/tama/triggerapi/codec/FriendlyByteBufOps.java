@@ -222,7 +222,7 @@ public class FriendlyByteBufOps implements DynamicOps<FriendlyByteBuf> {
 
 	@Override
 	public RecordBuilder<FriendlyByteBuf> mapBuilder() {
-		return new com.mojang.serialization.RecordBuilder.MapBuilder<>(this);
+		return new RecordBuilder.MapBuilder<>(this);
 	}
 
 	@Override

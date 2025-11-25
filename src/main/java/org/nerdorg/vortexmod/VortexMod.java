@@ -1,5 +1,8 @@
 package org.nerdorg.vortexmod;
 
+import com.code.tama.triggerapi.boti.packets.BOTIPackets;
+import com.code.tama.triggerapi.dimensions.packets.DimensionPacketsRegistration;
+import com.code.tama.triggerapi.universal.UniversalCommon;
 import com.mojang.logging.LogUtils;
 import com.simibubi.create.content.kinetics.BlockStressValues;
 import com.simibubi.create.foundation.data.CreateRegistrate;
@@ -44,13 +47,6 @@ public class VortexMod {
     public static boolean CC_ACTIVE = false;
 
     public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(VortexMod.MODID);
-
-    private static final String PROTOCOL = "1";
-    public static final SimpleChannel Network = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(MODID, "main"))
-            .clientAcceptedVersions(PROTOCOL::equals)
-            .serverAcceptedVersions(PROTOCOL::equals)
-            .networkProtocolVersion(() -> PROTOCOL)
-            .simpleChannel();
 
     static {
         REGISTRATE.setTooltipModifierFactory(item -> new ItemDescription.Modifier(item, TooltipHelper.Palette.STANDARD_CREATE)
@@ -104,12 +100,14 @@ public class VortexMod {
     }
 
     public void postInit(FMLLoadCompleteEvent evt) {
-        Network.registerMessage(0, AssemblePacket.class, AssemblePacket::encode, AssemblePacket::decode, AssemblePacket::handle);
-        Network.registerMessage(1, DisassemblePacket.class, DisassemblePacket::encode, DisassemblePacket::decode, DisassemblePacket::handle);
-        Network.registerMessage(2, SetTargetPacket.class, SetTargetPacket::encode, SetTargetPacket::decode, SetTargetPacket::handle);
-        Network.registerMessage(3, ToggleStabilizerPacket.class, ToggleStabilizerPacket::encode, ToggleStabilizerPacket::decode, ToggleStabilizerPacket::handle);
-        Network.registerMessage(4, ToggleAntiGravPacket.class, ToggleAntiGravPacket::encode, ToggleAntiGravPacket::decode, ToggleAntiGravPacket::handle);
-        Network.registerMessage(5, SyncComputerInfoPacket.class, SyncComputerInfoPacket::encode, SyncComputerInfoPacket::decode, SyncComputerInfoPacket::handle);
+        BOTIPackets.registerPackets();
+        DimensionPacketsRegistration.registerPackets();
+        UniversalCommon.Networking.registerMsg(AssemblePacket.class);
+        UniversalCommon.Networking.registerMsg(DisassemblePacket.class);
+        UniversalCommon.Networking.registerMsg(SetTargetPacket.class);
+        UniversalCommon.Networking.registerMsg(ToggleStabilizerPacket.class);
+        UniversalCommon.Networking.registerMsg(ToggleAntiGravPacket.class);
+        UniversalCommon.Networking.registerMsg(SyncComputerInfoPacket.class);
         System.out.println("Create: The Time Vortex Initialized!");
     }
 }

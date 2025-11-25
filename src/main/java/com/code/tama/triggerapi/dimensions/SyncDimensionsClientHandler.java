@@ -2,7 +2,7 @@
 package com.code.tama.triggerapi.dimensions;
 
 import com.code.tama.triggerapi.dimensions.packets.s2c.SyncDimensionsS2C;
-import net.minecraft.client.Minecraft;
+import com.code.tama.triggerapi.universal.UniversalClientOnly;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
@@ -17,10 +17,10 @@ public class SyncDimensionsClientHandler {
 	 */
 	public static void handleDimSyncPacket(SyncDimensionsS2C mes) {
 
-		if (Minecraft.getInstance().player == null || Minecraft.getInstance().player.connection.levels() == null)
+		if (UniversalClientOnly.client().player == null || UniversalClientOnly.getPacketListener().levels() == null)
 			return;
 
-		Set<ResourceKey<Level>> levels = Minecraft.getInstance().player.connection.levels();
+		Set<ResourceKey<Level>> levels = UniversalClientOnly.client().player.connection.levels();
 		// If this player knows about this dimension
 		if (levels.contains(mes.level)) {
 			// If remove

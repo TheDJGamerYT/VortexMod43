@@ -1,5 +1,6 @@
 package org.nerdorg.vortexmod.packets.c2s;
 
+import com.code.tama.triggerapi.networking.ImAPacket;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
@@ -10,7 +11,7 @@ import org.nerdorg.vortexmod.ship_management.TardisInfo;
 
 import java.util.function.Supplier;
 
-public class SetTargetPacket {
+public class SetTargetPacket implements ImAPacket {
     private BlockPos entity_pos;
     private BlockPos pos;
     private double rot_x;

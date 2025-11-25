@@ -3,6 +3,7 @@ package com.code.tama.triggerapi.boti.packets.S2C;
 
 import com.code.tama.triggerapi.boti.AbstractPortalTile;
 import com.code.tama.triggerapi.boti.client.BotiChunkContainer;
+import com.code.tama.triggerapi.networking.ImAPacket;
 import com.code.tama.tts.TTSMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class PortalChunkDataPacketS2C {
+public class PortalChunkDataPacketS2C implements ImAPacket {
 	private final BlockPos portalPos;
 
 	int index;
